@@ -1,18 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socket Thing1</title>
-</head>
-<body>
-    Client1
-    <button onclick="sendMessage()">Send Msg</button>
-</body>
-<div id="msg">
 
-</div>
-<script src="https://code.jquery.com/jquery-3.6.1.js"  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="  crossorigin="anonymous"></script>
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <title>Socket Thing1</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"></style>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></style>
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main >
+    Client1
+    <button class="btn btn-primary" onclick="sendMessage()">Send Msg</button>
+    <div id="msg"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Title</h3>
+                  <p class="card-text">Text</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Title</h3>
+                  <p class="card-text">Text</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Title</h3>
+                    <p class="card-text">Text</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+
+
+   
+
+
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+   
+<script src="../node_modules/jquery/dist/jquery.js"  ></script>
+<script src="../node_modules/@popperjs/core/dist/umd/popper.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script>
     // Create WebSocket connection.
@@ -25,7 +79,7 @@
 
     // Listen for messages
     socket.addEventListener('message', function (event) {
-        console.log('Message from server ', event.data);
+        console.log('Message from server ', event.data);        
        $('#msg').html(event.data);
 
     });
@@ -34,4 +88,6 @@
         socket.send('Hello From Client1!');
     }
 </script>
+</body>
+
 </html>
