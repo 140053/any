@@ -36,6 +36,7 @@
       }
       
       .gameBoard {
+       
         position: relative;
         font-family: helvetica, sans-serif;
         color: white;
@@ -128,6 +129,7 @@
         height: 100px;
         line-height: 100px;
         text-align: center;
+        
         font-size: 30px;
         color: #003c7b;
         text-shadow: initial;
@@ -141,10 +143,11 @@
         -moz-box-shadow: inset 0 1px 24px 1px rgba(0, 0, 0, 0.48);
         box-shadow: inset 0 1px 24px 1px rgba(0, 0, 0, 0.48);
       }
-      .gameBoard .questionHolder span {
+      .gameBoard .questionHolder span select {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
+        word-wrap: break-word;
       }
       
       .gameBoard .colHolder {

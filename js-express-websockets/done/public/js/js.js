@@ -8,9 +8,11 @@ function loadQuestion(){
             //console.log( val.length + ' ' + key );
             //setanswerdash(val, val.length)
             items.push("<option>" + key + "</option>")
+           
         });
         //console.log(items)
         $('#qholder').html(items);
+        
 
     }).fail(function(){
         console.log("An error has occurred.");
@@ -18,9 +20,15 @@ function loadQuestion(){
 }
 
 function clickanser(id, num){
+   
     if( $('#'+id).hasClass('record') == true){
         alert('Already Recorded')
     }else{
+        btncorrect();
+        
+
+        sendMessage('shan', num)
+
         $('#'+id).css('color', 'red').addClass('record');
         var survey = $('#s'+num).text();
         var totalscore = $('#boardScore').text();
@@ -41,6 +49,8 @@ function setanswerdash(){
         if(qust != ''){
             $.getJSON( "/js/FF3.json", function( data ) {
                 var anslent = Object.keys(data[qust]).length;
+                //console.log(anslent)
+                $('#answercnt').val(anslent);
                 
                 var answer = [];
                 var answer2 = [];
@@ -54,7 +64,7 @@ function setanswerdash(){
                                                 '<span class="DBG">' + cnt +  '</span>'+
                                         ' </div>'+
                                             '<div  class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">'+
-                                            ' <span>'+ data[qust][index][0] +'</span>'+
+                                            ' <span id="ans'+ cnt +'">'+ data[qust][index][0] +'</span>'+
                                                 '<b id="s'+ cnt +'" class="LBG">'+ data[qust][index][1] +'</b>'+
                                             '</div>'+
                                         '</div>'+
@@ -71,7 +81,7 @@ function setanswerdash(){
                                                 '<span class="DBG">' + index2+1 +  '</span>'+
                                         ' </div>'+
                                             '<div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">'+
-                                            ' <span>'+ data[qust][index2][0] +'</span>'+
+                                            ' <span id="ans'+ cnt2 +'">'+ data[qust][index2][0] +'</span>'+
                                                 '<b id="s'+ cnt2 +'" class="LBG">'+ data[qust][index2][1] +'</b>'+
                                             '</div>'+
                                         '</div>'+
@@ -91,7 +101,30 @@ function setanswerdash(){
                                  
                     $('.col2').empty().html(answer2);
 
-                }
+                }else if( anslent <= 6){
+                    $('.col1').empty();
+                    $('.col2').empty();
+                    var tempa = [];
+        
+                    for (let index = 0; index < 6 ; index++) {
+                      var cnt = index + 1;
+                      tempa.push('<div class="cardHolder" style="perspective: 800px;">' + 
+                                    '<div onclick="clickanser(this.id, '+cnt+')" id="card' + cnt + '" class="card " style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">' +
+                                    ' <div class="front" style="backface-visibility: hidden;">'+
+                                            '<span class="DBG">' + cnt +  '</span>'+
+                                    ' </div>'+
+                                        '<div  class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">'+
+                                        ' <span>'+ data[qust][index][0] +'</span>'+
+                                            '<b id="s'+ cnt +'" class="LBG">'+ data[qust][index][1] +'</b>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>')
+                      
+                    }
+                    $('.colHolder').empty().html(tempa);
+        
+                  }
+                
                 
               
 
@@ -105,10 +138,66 @@ function setanswerdash(){
 }
 
 
-const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
- //   audio.play();
 
 
+ function btnwrong(){
+    const audio = new Audio("/sound/wrong.mp3");
+    audio.play();
+ }
+
+ function btncorrect(){
+    const audio = new Audio("/sound/correct.mp3");
+    audio.play();
+ }
+
+
+ // Create WebSocket connection.
+ const socket = new WebSocket('ws://localhost:80');
+
+ // Connection opened
+ socket.addEventListener('open', function (event) {
+     console.log('Connected to WS Server')
+ });
+
+ // Listen for messages
+ socket.addEventListener('message', function (event) {
+     console.log(event.data);
+ });
+
+ const sendMessage = (type, num, team) => {    
+    if(type == 'sq'){
+        var msg = {   
+            status: 'quest',         
+            question: $('#qholder').val(),
+            answer: $('#answercnt').val()
+        }
+    
+    }else if( type == 'shan'){
+        var ans = $('#ans'+ num).html();
+        var scr = $('#s'+ num ).html();
+        console.log( ans + ' ' + scr)
+        var msg = {
+            status: 'anser',           
+            ans:  ans,
+            scr: scr,
+            num: num
+        }
+
+    }else if (type == 'award'){
+        var msg = {
+            status: 'award',
+            team: '',
+            num: num
+        }
+    
+    }else{
+        var msg = {           
+            questions: $('#qholder').val()
+        }
+    }  
+     
+     socket.send(JSON.stringify(msg));
+ }
 
 
 /*jshint strict:false */

@@ -14,8 +14,7 @@
         </script>
         <style type="text/css"></style>
     </head>
-    <body translate="no">
-       
+    <body translate="no">       
          
       <div class="gameBoard">
           <!--- Scores --->
@@ -25,6 +24,7 @@
 
           <div class="score" id="team1a">
             <button class="myb shscore " >show Total</button>
+           
           </div>
           
           <div class="score" id="team2">0</div>
@@ -34,12 +34,13 @@
 
           <!--- Question --->
           <div class="">
-              <select id="qholder" class="questionHolder" >
+              <select id="qholder" class="questionHolder"  >
                 <option value="" class="question" >Select questions</option>               
-              </select>  
+              </select>
+              <input type="hidden" id="answercnt">  
                 <button onclick="loadQuestion()" class="custombtn myb">Load Questions</button>
-                <button onclick=" setanswerdash()" class="custombtn myb">Select Question</button>
-                <button onclick="" class="custombtn myb">Load Questions</button>
+                <button onclick=" setanswerdash()" class="custombtn myb">Load Answer</button>
+                <button onclick="sendMessage('sq')" class="custombtn myb">Show Questions in Board</button>
           </div>
 
           <!--- Answers --->
@@ -189,13 +190,13 @@
           <!--- Buttons --->
           <div class="btnHolder">
               <div onclick="awardTo('team1')" id="awardTeam1" data-team="1" class=" myb button">Award Team 1</div>
-              <div id="newQuestion" class=" myb button">Next Round</div>
+              <div  id="newQuestion" class=" myb button">Next Round</div>
               <div onclick="awardTo('team2')" id="awardTeam2" data-team="2" class=" myb button">Award Team 2</div>
           </div>
           <hr>
-            <a class="c-btn">X</a>
-            <a class="c-btn">XX</a>
-            <a class="c-btn">XXX</a>
+            <a onclick="btnwrong()" class="c-btn">X</a>
+            <a onclick="btnwrong()"class="c-btn">XX</a>
+            <a onclick="btnwrong()"class="c-btn">XXX</a>
 
         </div>
 
@@ -206,6 +207,8 @@
        
         <script src="/assets/jquery/dist/jquery.js"></script>
         <script src="/js/js.js"> </script>
+
+       
         
     </body>
 </html>

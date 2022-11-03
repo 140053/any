@@ -29,5 +29,8 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res)=>{
   res.render('dashboard',{});
 })
+app.get('/board', (req, res)=>{
+  res.render('board',{});
+})
 
 server.listen(80, () => console.log(`Lisening on port :80`))
