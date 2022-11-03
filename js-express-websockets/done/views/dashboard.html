@@ -1,0 +1,195 @@
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+        <meta name="apple-mobile-web-app-title" content="CodePen">
+        <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+        <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+        <title>CodePen - Family Feud</title>
+        
+
+        <link rel="stylesheet" href="../public/css/css.css">
+        <script>
+          window.console = window.console || function(t) {};
+        </script>
+        <style type="text/css"></style>
+    </head>
+    <body translate="no">
+       
+         
+      <div class="gameBoard">
+          <!--- Scores --->
+          <div class="score" id="boardScore">0</div>
+          
+          <div class="score" id="team1">96</div>
+
+          <div class="score" id="team1a">
+            <button class="myb shscore " >show Total</button>
+          </div>
+          
+          <div class="score" id="team2">0</div>
+          <div class="score" id="team2a">
+              <button class="myb shscore" >show Total</button>
+          </div>
+
+          <!--- Question --->
+          <div class="">
+              <select id="qholder" class="questionHolder" >
+                <option class="question" >Select questions</option>               
+              </select>
+              <button class="questionHolder myb">Load Questions</button>
+          </div>
+
+          <!--- Answers --->
+          <div class="colHolder">
+              <div class="col1">
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">1</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>Labor Day</span>
+                              <b class="LBG">25</b>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">2</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>Memorial Day</span>
+                              <b class="LBG">12</b>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">3</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>New Year's Day</span>
+                              <b class="LBG">11</b>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">4</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>Valentine's Day</span>
+                              <b class="LBG">11</b>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">5</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>Mother's Day</span>
+                              <b class="LBG">7</b>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cardHolder" style="perspective: 800px;">
+                      <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                          <div class="front" style="backface-visibility: hidden;">
+                              <span class="DBG">6</span>
+                          </div>
+                          <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                              <span>Columbus Day</span>
+                              <b class="LBG">6</b>
+                          </div>
+                      </div>
+                  </div>
+              </div><div class="col2">
+              <div class="cardHolder" style="perspective: 800px;">
+                  <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                      <div class="front" style="backface-visibility: hidden;">
+                          <span class="DBG">7</span>
+                      </div>
+                      <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                          <span>Thanksgiving Day</span>
+                          <b class="LBG">6</b>
+                      </div>
+                  </div>
+              </div>
+              <div class="cardHolder" style="perspective: 800px;">
+                  <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                      <div class="front" style="backface-visibility: hidden;">
+                          <span class="DBG">8</span>
+                      </div>
+                      <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                          <span>Christmas Day</span>
+                          <b class="LBG">5</b>
+                      </div>
+                  </div>
+              </div>
+              <div class="cardHolder" style="perspective: 800px;">
+                  <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                      <div class="front" style="backface-visibility: hidden;">
+                          <span class="DBG">9</span>
+                      </div>
+                      <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                          <span>Washington's Birthday</span>
+                          <b class="LBG">5</b>
+                      </div>
+                  </div>
+              </div>
+              <div class="cardHolder" style="perspective: 800px;">
+                  <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                      <div class="front" style="backface-visibility: hidden;">
+                          <span class="DBG">10</span>
+                      </div>
+                      <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                          <span>Independence Day</span>
+                          <b class="LBG">4</b>
+                      </div>
+                  </div>
+              </div>
+              <div class="cardHolder" style="perspective: 800px;">
+                  <div class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">
+                      <div class="front" style="backface-visibility: hidden;">
+                          <span class="DBG">11</span>
+                      </div>
+                      <div class="back DBG" style="transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); backface-visibility: hidden;">
+                          <span>St Patrick's Day</span>
+                          <b class="LBG">4</b>
+                      </div>
+                  </div>
+              </div>
+              <div class="cardHolder empty" style="perspective: 800px;">
+                  <div>
+
+                  </div>
+              </div>
+              </div>
+          </div>
+
+          <!--- Buttons --->
+          <div class="btnHolder">
+              <div id="awardTeam1" data-team="1" class=" myb button">Award Team 1</div>
+              <div id="newQuestion" class=" myb button">Next Round</div>
+              <div id="awardTeam2" data-team="2" class=" myb button">Award Team 2</div>
+          </div>
+        </div>
+
+
+
+
+
+       
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../public/js/js.js"> </script>
+        
+    </body>
+</html>
