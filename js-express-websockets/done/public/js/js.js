@@ -40,8 +40,12 @@ function clickanser(id, num){
 
 function awardTo(team){
     var scoreboard = $('#boardScore').text();
-    $('#'+team).text(scoreboard);
+    var score = $('#'+team).text();
+    $('#'+team).text(Number(scoreboard) + Number(score));
+    sendMessage('award', scoreboard, team)
     $('#boardScore').text('0');
+    //sendMessage = (type, num, team)
+    
 }
 
 function setanswerdash(){
@@ -140,14 +144,37 @@ function setanswerdash(){
 
 
 
- function btnwrong(){
-    const audio = new Audio("/sound/wrong.mp3");
-    audio.play();
+ function btnwrong(id){
+    $('#'+ id).css('background-color','red')
+    const audio = new Audio("/sound/wrong.mp3");    
+    switch (id) {
+        case 'one':
+            sendMessage('wrong', 'X', '');
+            audio.play();            
+            break;
+        case 'two':
+            sendMessage('wrong', 'XX', '');
+            audio.play(); 
+            break;
+        case 'three':
+            sendMessage('wrong', 'XXX', '');
+            audio.play(); 
+            break; 
+        default:
+            break;
+    }
+   
  }
 
  function btncorrect(){
     const audio = new Audio("/sound/correct.mp3");
     audio.play();
+ }
+
+ function resertwrongbtn(){
+    $('#one').css('background-color','yellow')
+    $('#two').css('background-color','yellow')
+    $('#three').css('background-color','yellow')
  }
 
 
@@ -171,6 +198,10 @@ function setanswerdash(){
             question: $('#qholder').val(),
             answer: $('#answercnt').val()
         }
+        if($('#qholder').val() != ''){
+            socket.send(JSON.stringify(msg));            
+        }
+        
     
     }else if( type == 'shan'){
         var ans = $('#ans'+ num).html();
@@ -182,21 +213,33 @@ function setanswerdash(){
             scr: scr,
             num: num
         }
+        socket.send(JSON.stringify(msg));
 
     }else if (type == 'award'){
         var msg = {
             status: 'award',
+            team: team,
+            num: num
+        }
+        socket.send(JSON.stringify(msg));
+    
+    }else if(type == 'wrong'){
+        //sendMessage('wrong', 'X', '')
+        var msg = {
+            status: 'wrong',
             team: '',
             num: num
         }
-    
+        socket.send(JSON.stringify(msg));
+
+
     }else{
         var msg = {           
             questions: $('#qholder').val()
         }
     }  
      
-     socket.send(JSON.stringify(msg));
+   
  }
 
 

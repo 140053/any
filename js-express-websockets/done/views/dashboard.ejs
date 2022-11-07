@@ -190,13 +190,13 @@
           <!--- Buttons --->
           <div class="btnHolder">
               <div onclick="awardTo('team1')" id="awardTeam1" data-team="1" class=" myb button">Award Team 1</div>
-              <div  id="newQuestion" class=" myb button">Next Round</div>
+              <div onclick="resertwrongbtn()"  class=" myb button">Reset WRONG btn</div>
               <div onclick="awardTo('team2')" id="awardTeam2" data-team="2" class=" myb button">Award Team 2</div>
           </div>
           <hr>
-            <a onclick="btnwrong()" class="c-btn">X</a>
-            <a onclick="btnwrong()"class="c-btn">XX</a>
-            <a onclick="btnwrong()"class="c-btn">XXX</a>
+            <a id="one" onclick="btnwrong(this.id)" class="c-btn">X</a>
+            <a id="two" onclick="btnwrong(this.id)"class="c-btn">XX</a>
+            <a id="three" onclick="btnwrong(this.id)"class="c-btn">XXX</a>
 
         </div>
 
