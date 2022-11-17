@@ -9,10 +9,35 @@
         background: -webkit-linear-gradient(top, #a7cfdf 0%, #23538a 100%);
         background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%);
         filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a', GradientType=0);
+        
         padding: 25px;
         height: 100%;
         width: 100%;
         box-sizing: border-box;
+        
+      }
+
+      .double{
+        height: 75px;
+        line-height: 75px;
+        width: 125px;        
+        left: 311px;
+        right: 0;
+        top: 36px;
+        position: absolute;
+        text-align: center;
+        margin: auto;
+        font-size: 20px;
+        height: 50px;
+        line-height: 50px;
+        width: 75px;
+        padding: 20px;
+        border: 2px solid white;
+        background-color: yellow;      
+        
+      }
+      .double:hover{
+        background-color: green;
       }
       
       .gameBoard .cardHolder>div,

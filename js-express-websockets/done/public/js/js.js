@@ -59,7 +59,7 @@ function setanswerdash(){
                 var answer = [];
                 var answer2 = [];
                
-                if (anslent > 6){
+                if (anslent >= 6){
                     for (let index = 0; index < 6; index++) {
                         var cnt = index + 1;
                         answer.push('<div class="cardHolder" style="perspective: 800px;">' + 
@@ -80,7 +80,7 @@ function setanswerdash(){
                         var cnt2 = index2 + 1;
                         //console.log(data[qust][index2]);
                         answer2.push('<div  class="cardHolder" style="perspective: 800px;">' + 
-                                        '<div onclick="clickanser(this.id, '+cnt2+')" id="card' + cnt2 + '" class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">' +
+                                        '<div onclick="clickanser(this.id, '+cnt2+')" id="dcard' + cnt2 + '" class="card" style="transform-style: preserve-3d; transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);">' +
                                         ' <div class="front" style="backface-visibility: hidden;">'+
                                                 '<span class="DBG">' + index2+1 +  '</span>'+
                                         ' </div>'+
@@ -233,12 +233,54 @@ function setanswerdash(){
         socket.send(JSON.stringify(msg));
 
 
-    }else{
+    }else if(type == 'roullete'){
+        //console.log('here')
+        var msg = {
+            status: 'roulette',
+            team: team,
+            num: ''
+        }
+        socket.send(JSON.stringify(msg));
+    }else if(type =='spin'){
+        var msg = {
+            status: 'spin',
+            team: '',
+            num: ''
+        }
+        socket.send(JSON.stringify(msg));
+    }  
+    else{
         var msg = {           
             questions: $('#qholder').val()
         }
     }  
      
+   
+ }
+
+
+ function spinwheel(){
+    sendMessage('spin', '', '');
+ }
+
+
+
+
+ function showHide_roulette(id){ 
+    //hideshow()   true or false
+    
+   
+    if($('#'+id).css('background-color') == 'rgb(0, 128, 0)'){
+        $('#'+ id).removeAttr('style').css('background-color','yellow').text('Show Roullete')
+        sendMessage('roullete', '', false) 
+    }else if ($('#'+id).css('background-color') == 'rgb(255, 0, 0)'){
+        $('#'+ id).css('background-color','green').text('Hide Roullete')
+        sendMessage('roullete', '', true) 
+    }else if($('#'+id).css('background-color') == 'rgb(255, 255, 0)'){
+
+        $('#'+ id).css('background-color','green').text('Hide Roullete')
+        sendMessage('roullete', '', true) 
+    }
    
  }
 

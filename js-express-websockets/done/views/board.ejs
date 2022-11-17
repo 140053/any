@@ -11,6 +11,7 @@
     
     
       <title>CodePen - Family Feud</title>
+     
       
       
     
@@ -28,10 +29,12 @@
       background: -webkit-linear-gradient(top, #a7cfdf 0%, #23538a 100%);
       background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%);
       filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a', GradientType=0);
+      /*
       padding: 25px;
       height: 100%;
       width: 100%;
       box-sizing: border-box;
+      */
     }
     
     .gameBoard .cardHolder>div,
@@ -257,6 +260,7 @@
         width:50%;
       }
     }
+
     </style>
     
       <script>
@@ -282,7 +286,7 @@
          
    
   
-  <div class="gameBoard" style=" margin-top: 150px;">
+  <div class="gameBoard" style=" margin-top: 150px; ">
       <!--- Scores --->
       <div class="score" id="boardScore">0</div>
       <div class="score" id="team1">0</div>
@@ -444,11 +448,247 @@
           <div id="newQuestion" ></div>
           <div id="awardTeam2" data-team="2" ></div>
       </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="wheel" style="display: none;">
+    <style>
+      
+
+      .wheel{
+        font-family: "Open Sans";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background: rgb(60, 60, 242);
+        background: linear-gradient(90deg, rgba(60, 60, 242, 1) 0%, rgba(98, 245, 230, 1) 52%, rgba(60, 60, 242, 1) 100%);
+        background-size: cover;
+      }
+
+      .mainbox{
+        position: relative;
+        width: 1000px;
+        height: 1000px;
+        /* left: -435px */
+      }
+      .mainbox:after{
+        position: absolute;
+        content: '';
+        width: 32px;
+        height: 32px;
+        background: url('arrow-left.png') no-repeat;
+        background-size: 32px;
+        right: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .box{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        font-weight: bold;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        overflow: hidden;
+        transition: all ease 5s;
+      }
+
+      #span{
+        width: 50%;
+        height: 50%;
+        display: inline-block;
+        position: absolute;
+      }
+
+      #span b {
+        font-size: 40px;
+      }
+      .span1{
+        clip-path: polygon(0 92%, 100% 50%, 0 8%);
+        background-color: #fffb00;
+        top: 260px;
+        left: 0;
+      }
+      .span2{
+        clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+        background-color: #ff4fa1;
+        top: 240px;
+        right: 0;
+      }
+      .span3{
+        clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+        background-color: #ffaa00;
+        bottom: 0;
+        left: 260px;
+      }
+      .span4{
+        clip-path: polygon(50% 100%, 92% 0, 8% 0);
+        background-color: #22ff00;
+        top: 0;
+        left: 240px;
+      }
+
+      .box1 .span3 b{
+        transform: translate(-50%, -50%) rotate(-270deg);
+      }
+      .box1 .span1 b,
+      .box2 .span1 b{
+      transform: translate(-50%, -50%) rotate(185deg);
+      }
+      .box2 .span3 b{
+      transform: translate(-50%, -50%) rotate(90deg);
+      }
+      .box1 .span4 b,
+      .box2 .span4 b{
+      transform: translate(-50%, -50%) rotate(-85deg);
+      }
+
+      span b{
+      font-size: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      }
+
+      .box2{
+      width: 100%;
+      height: 100%;
+      transform: rotate(-135deg);
+      }
+
+
+      .spin{
+        position: absolute;
+        top: 50%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        background-color: #001aff;
+        color: #fff;
+        box-shadow: 0 5px 20px #000;
+        font-weight: bold;
+        font-size: 22px;
+        cursor: pointer;
+      }
+      .spin:active{
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+      }
+
+      .mainbox.animate:after{
+        animation: animateArrow 0.7s ease infinite;
+      }
+
+      .mainbox:after {
+        position: absolute;
+        content: '';
+        width: 32px;
+        height: 32px;
+        background: url(arrow-left.png) no-repeat;
+        background-size: 32px;
+        right: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      @keyframes animateArrow{
+        50%{
+          right: -40px;
+        }
+      }
+    </style>
+    <div id="mainbox" class="mainbox">
+      <div id="box" class="box">
+        <div class="box1">
+          <span id="span" class="span1"><b>Mathematics</b></span>
+          <span  id="span" class="span2"><b>Science</b></span>
+          <span  id="span" class="span3"><b>Filipino</b></span>
+          <span  id="span" class="span4"><b>History or Agriculture</b></span>
         </div>
+        <div class="box2">
+          <span  id="span" class="span1"><b>Music</b></span>
+          <span  id="span" class="span2"><b>Showbiz</b></span>
+          <span id="span" class="span3"><b>Sports</b></span>
+          <span id="span" class="span4"><b>Politics or Economics</b></span>
+        
+        </div>
+      </div> 
+      <button class="spin" onclick="rotateFunction()">SPIN</button>
+    </div>
+   
+
+
+
+   
+  </div>
     </body>
     <script src="/assets/jquery/dist/jquery.js"></script>
     <script src="/js/js.js"> </script>
     <script>
+
+      function rotateFunction(){
+        var min = 5024;
+        var max = 9999;
+        var deg = Math.floor(Math.random() * (max - min)) + min;
+        document.getElementById('box').style.transform = "rotate("+deg+"deg)";
+      }
        // Listen for messages
         socket.addEventListener('message', function (event) {           
             var data = JSON.parse(event.data)
@@ -466,15 +706,39 @@
               var score = $('#'+data.team).text();                           
               $('#'+data.team).text(Number(data.num) + Number(score))
               $('#boardScore').text('0')
-
-              
             }
 
             if(data.status == 'wrong'){
               wrong(data.num);
             }
+
+            if(data.status == 'roulette'){
+              var statusss = data.team;
+              //console.log(data);
+              hideshowb(statusss)
+              //wrong(data.num);
+            }
+
+            if (data.status == 'spin'){
+              rotateFunction()
+            }
            
         });
+
+        const hideshowb = (status) => {
+          if(status == true){
+            //console.log('show roullete')
+            $('.wheel').css('display', '');
+            $('.gameBoard').css('display', 'none')
+          }else{
+           // console.log('hide roullete')
+            $('.wheel').css('display', 'none');
+            $('.gameBoard').css('display', '')
+          }
+        }
+
+
+
         const wrong = (xx) => {
           document.getElementById("myBtn").click();
           $('.xx').html(xx)
@@ -500,7 +764,7 @@
         }
 
         const makeQuestionbar = (num) =>{
-          if(num > 6) {
+          if(num >= 6) {
             var temp = []
             
             for (let index = 0; index < 6 ; index++) {
@@ -665,6 +929,9 @@
       </div>
 
     </div>
+    
+
+    
 
     
 </html>
