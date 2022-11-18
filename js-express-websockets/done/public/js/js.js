@@ -171,6 +171,18 @@ function setanswerdash(){
     audio.play();
  }
 
+ function playmusic(id){
+    if(id == 1){
+        const audio = new Audio("/sound/correct.mp3");
+        audio.play();
+    }
+    if(id == 2){
+        const audio = new Audio("/sound/wrong.mp3");
+        audio.play();
+    }
+
+ }
+
  function btnwrong1(){
     const audio = new Audio("/sound/wrong.mp3");
     audio.play();
@@ -310,6 +322,8 @@ function setanswerdash(){
 
 
  function showquestd(id){
+
+    $('#'+id).css('background-color', 'green');
     
     switch (id) {
         case 'mq1': //math        
@@ -351,6 +365,12 @@ function setanswerdash(){
         case 'hisq3':
             sendMessage('shquest', '/img/his/q3/q.jpg', '');
             break;
+        case 'hisq4':
+            sendMessage('shquest', '/img/his/q4/q.jpg', '');
+            break;
+         case 'hisq4':
+            sendMessage('shquest', '/img/his/q5/q.jpg', '');
+            break;
             //Agriculture
         case 'agq1':
             sendMessage('shquest', '/img/agri/q1/q.jpg', '');
@@ -380,6 +400,13 @@ function setanswerdash(){
             break;
         case 'shq3':
             sendMessage('shquest', '/img/shobiz/q3/q.jpg', '');
+            break;
+            //sports
+        case 'shq4':
+            sendMessage('shquest', '/img/shobiz/q4/q.jpg', '');
+            break;
+        case 'shq5':
+            sendMessage('shquest', '/img/shobiz/q5/q.jpg', '');
             break;
             //sports
         case 'spoq1':
@@ -461,6 +488,12 @@ function setanswerdash(){
         case 'hisa3':
             sendMessage('shquest', '/img/his/q3/a.jpg', '');
             break;
+        case 'hisa4':
+            sendMessage('shquest', '/img/his/q4/a.jpg', '');
+            break;            
+        case 'hisa5':
+            sendMessage('shquest', '/img/his/q5/a.jpg', '');
+            break;
             //Agriculture
         case 'aga1':
             sendMessage('shquest', '/img/agri/q1/a.jpg', '');
@@ -490,6 +523,12 @@ function setanswerdash(){
             break;
         case 'sha3':
             sendMessage('shquest', '/img/shobiz/q3/a.jpg', '');
+            break;
+        case 'sha4':
+            sendMessage('shquest', '/img/shobiz/q4/a.jpg', '');
+            break;
+        case 'sha5':
+            sendMessage('shquest', '/img/shobiz/q5/a.jpg', '');
             break;
             //sports
         case 'spoa1':
