@@ -19,17 +19,17 @@
       <div class="gameBoard">
           <!--- Scores --->
           <div class="score" id="boardScore">0</div>
-          <a class="double">Double</a>
+          <a onclick="double()" class="double">Double</a>
           
           <div class="score" id="team1">0</div>
 
-          <div class="score" id="team1a">
+          <div class="score" id="team1a" style="display: none;">
             <button class="myb shscore " >show Total</button>
            
           </div>
           
           <div class="score" id="team2">0</div>
-          <div class="score" id="team2a">
+          <div class="score" id="team2a" style="display: none;">
               <button class="myb shscore" >show Total</button>
           </div>
 
@@ -191,7 +191,7 @@
           <!--- Buttons --->
           <div class="btnHolder">
               <div onclick="awardTo('team1')" id="awardTeam1" data-team="1" class=" myb button">Award Team 1</div>
-              <div onclick="resertwrongbtn()"  class=" myb button">Reset WRONG btn</div>
+              <div onclick="resertwrongbtn()"  class=" myb button">Reset WRONG</div>
               <div onclick="awardTo('team2')" id="awardTeam2" data-team="2" class=" myb button">Award Team 2</div>
           </div>
           <hr>
@@ -204,7 +204,648 @@
         <hr>
             <a id="showhide" onclick="showHide_roulette(this.id)" class="c-btn">Show Roulette</a>
             <a id="spinwheel" onclick="spinwheel()" class="c-btn">Spin</a>
-            <a id="three" onclick="btnwrong(this.id)"class="c-btn">XXX</a>
+            <a  onclick="closemodal()" class="c-btn">CLOSE MODAL</a>
+            <a  onclick="btnwrong1()" class="c-btn">XXX</a>
+
+        <hr>
+        <div class="container m-2">
+            <style>
+                 .accordion {
+                                                                                         
+                         cursor: pointer;
+                          padding: 18px;
+                          width: 100%;
+                          border: none;
+                          text-align: left;
+                          outline: none;
+                          font-size: 15px;
+                          transition: 0.4s;
+                    }
+                                              
+                    .accordion:hover {
+                          background-color: #ccc; 
+                    }
+                                              
+                    .panel {
+                        padding: 0 18px;
+                        display: none;
+                        background-color: white;
+                        overflow: hidden;
+                        margin-top: 3px;
+                        margin-bottom: 3px;
+                       
+                        
+                    }
+                    
+.clear-fix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+.button-group {
+  margin-bottom: 1rem;
+  font-size: 0;
+  border: 1px solid #ffa500;
+  padding: 1rem;
+}
+.button-group .button {
+  margin: 0;
+  margin-bottom: 1px;
+  margin-right: 12px;
+}
+.button-group .button:last-child {
+  margin-right: 0;
+}
+.button-group.button-group--stacked .button {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.button-group.button-group--stacked .button:last-child {
+  margin-bottom: 0;
+}
+.button-group.button-group--expanded .button:first-child:nth-last-child(2),
+.button-group.button-group--expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button {
+  display: inline-block;
+  width: calc(50% - 6px);
+}
+.button-group.button-group--expanded .button:first-child:nth-last-child(3),
+.button-group.button-group--expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button {
+  display: inline-block;
+  width: calc(33.33333333333333% - 8px);
+}
+.button-group.button-group--expanded .button:first-child:nth-last-child(4),
+.button-group.button-group--expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button {
+  display: inline-block;
+  width: calc(25% - 9px);
+}
+.button-group.button-group--expanded .button:first-child:nth-last-child(5),
+.button-group.button-group--expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button {
+  display: inline-block;
+  width: calc(20% - 9.6px);
+}
+.button-group.button-group--expanded .button:first-child:nth-last-child(6),
+.button-group.button-group--expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button {
+  display: inline-block;
+  width: calc(16.666666666666664% - 10px);
+}
+.button {
+  background-color: #027faa;
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  outline: none;
+}
+.button.button--primary {
+  background-color: #17aa17;
+}
+.button.button--warn {
+  background-color: #b61b1b;
+}
+.button:hover,
+.button.button--primary:hover,
+.button.button-warn:hover {
+  background-color: #f60;
+}
+.button:focus,
+.button.button--primary:focus,
+.button.button--warn:focus {
+  background-color: #f60;
+}
+.button:active,
+.button.button--primary:active,
+.button.button--warn:active {
+  background-color: #dd5800;
+}
+.button.button__secondary {
+  background-color: transparent;
+  color: #027faa;
+  padding: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.button.button__secondary.button.button__secondary--primary {
+  color: #17aa17;
+}
+.button.button__secondary.button.button__secondary--warn {
+  color: #b61b1b;
+}
+.button.button__secondary:hover,
+.button.button__secondary.button.button__secondary--primary:hover,
+.button.button__secondary.button.button__secondary--warn:hover {
+  color: #f60;
+}
+.button.button__secondary:focus,
+.button.button__secondary.button.button__secondary--primary:focus,
+.button.button__secondary.button.button__secondary--warn:focus {
+  color: #f60;
+}
+.button.button__secondary:active,
+.button.button__secondary.button.button__secondary--primary:active,
+.button.button__secondary.button.button__secondary--warn:active {
+  color: #dd5800;
+}
+.button.button__outline {
+  background-color: transparent;
+  color: #027faa;
+  border: 1px solid #027faa;
+}
+.button.button__outline.button.button__outline--primary {
+  border-color: #17aa17;
+  color: #17aa17;
+}
+.button.button__outline.button.button__outline--warn {
+  border-color: #b61b1b;
+  color: #b61b1b;
+}
+.button.button__outline:hover,
+.button.button__outline.button.button__outline--primary:hover,
+.button.button__outline.button.button__outline--warn:hover {
+  background-color: #f60;
+  border-color: #f60;
+  color: #fff;
+}
+.button.button__outline:focus,
+.button.button__outline.button.button__outline--primary:focus,
+.button.button__outline.button.button__outline--warn:focus {
+  background-color: #f60;
+  border-color: #f60;
+  color: #fff;
+}
+.button.button__outline:active,
+.button.button__outline.button.button__outline--primary:active,
+.button.button__outline.button.button__outline--warn:active {
+  background-color: #dd5800;
+  border-color: #dd5800;
+  color: #fff;
+}
+               
+                
+
+
+                
+                
+            </style>
+  
+      
+<button class="accordion uno ">Mathematics<span class="badge badge-warning"></span></button>
+<div class="panel" >
+    <div class="list-group">
+        
+        
+        <style>
+
+        </style>
+        
+        <div class="button-group button-group--expanded">
+            <button id="mq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="ma1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="mq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="ma2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="mq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="ma3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        
+        
+        
+        
+      
+      
+    </div>
+</div>
+      
+<button class="accordion uno ">Science <span class="badge badge-success"></span></button>
+<div class="panel" >
+   <div class="button-group button-group--expanded">
+            <button id="sciq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="scia1" onclick="showqans(this.id)"  class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+    </div>
+    <div class="button-group button-group--expanded">
+        <button id="sciq2" onclick="showquestd(this.id)" class="button button__outline">
+          QUESTION 1
+        </button>
+
+        <button id="scia2" onclick="showqans(this.id)"  class="button button__outline button__outline--primary">
+         ANSWER 
+        </button>
+
+       
+      </div>
+    <div class="button-group button-group--expanded">
+        <button id="sciq3" onclick="showquestd(this.id)" class="button button__outline">
+          QUESTION 1
+        </button>
+
+        <button id="scia3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+         ANSWER 
+        </button>
+
+       
+      </div>
+       
+</div>
+      
+<button class="accordion uno">Filipino<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="filq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="fila1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div  class="button-group button-group--expanded">
+            <button class="button button__outline" id="filq2" onclick="showquestd(this.id)">
+              QUESTION 1
+            </button>
+
+            <button id="fila2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="filq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="fila3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+   </div>
+          
+          
+          
+          
+          
+
+<button class="accordion uno">History<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="hisq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="hisa1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="hisq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="hisa2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="hisq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="hisa3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+<button class="accordion uno">Agriculture<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="agq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="aga1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="agq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="aga2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="agq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="aga3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+
+<button class="accordion uno">Music<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="musq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="musa1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="musq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="musa2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="musq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id=".musa3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+<button class="accordion uno">Showbiz<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="shq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="sha1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="shq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="sha2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="shq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="sha3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+
+<button class="accordion uno">Sports<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="spoq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="spoa1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button  id="spoq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="spoa2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="spoq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="spoa3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+<button class="accordion uno">Politics<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="polq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="pola1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="polq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="pola2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="polq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="pola3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+
+<button class="accordion uno">Economics<span class="badge badge-danger"></span></button>
+<div class="panel">
+     <div class="list-group">
+        <div class="button-group button-group--expanded">
+            <button id="econq1" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button  id="econa1" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button  id="econq2" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="econa2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+        <div class="button-group button-group--expanded">
+            <button id="econq3" onclick="showquestd(this.id)" class="button button__outline">
+              QUESTION 1
+            </button>
+
+            <button id="econa3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
+             ANSWER 
+            </button>
+
+           
+          </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+      
+<script>
+   var acc = document.getElementsByClassName("uno");
+   var i;
+      
+    for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+           this.classList.toggle("active");
+           var panel = this.nextElementSibling;
+           if (panel.style.display === "block") {
+               panel.style.display = "none";
+           } else {
+               panel.style.display = "block";
+           }
+    });
+    }
+ </script>
+         
+
         
 
 

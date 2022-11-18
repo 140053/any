@@ -171,6 +171,16 @@ function setanswerdash(){
     audio.play();
  }
 
+ function btnwrong1(){
+    const audio = new Audio("/sound/wrong.mp3");
+    audio.play();
+ }
+
+ function spinsound(){
+    const audio = new Audio("/sound/spin1.mp3");
+    audio.play();
+ }
+
  function resertwrongbtn(){
     $('#one').css('background-color','yellow')
     $('#two').css('background-color','yellow')
@@ -248,7 +258,37 @@ function setanswerdash(){
             num: ''
         }
         socket.send(JSON.stringify(msg));
-    }  
+    }else if (type == 'doublesc'){
+        var msg = {
+            status: 'doublesc',
+            team: '',
+            num: Number($('#boardScore').text())
+        }
+        socket.send(JSON.stringify(msg));
+    }else if(type == 'shquest'){
+        var msg = {
+            status: 'shquest',
+            team: '',
+            num: num
+        }
+        socket.send(JSON.stringify(msg));
+    
+    }else if(type == 'shans'){
+        var msg = {
+            status: 'shans',
+            team: '',
+            num: ''
+        }
+        socket.send(JSON.stringify(msg));
+    
+    }else if(type == 'closemodal'){
+        var msg = {
+            status: 'closemodal',
+            team: '',
+            num: ''
+        }
+        socket.send(JSON.stringify(msg));
+    }
     else{
         var msg = {           
             questions: $('#qholder').val()
@@ -261,6 +301,232 @@ function setanswerdash(){
 
  function spinwheel(){
     sendMessage('spin', '', '');
+    spinsound()
+ }
+
+ function closemodal(){
+    sendMessage('closemodal', '', '');
+ }
+
+
+ function showquestd(id){
+    
+    switch (id) {
+        case 'mq1': //math        
+            sendMessage('shquest', '/img/math/q1/q.jpg', '');
+            break;
+        case 'mq2':
+            sendMessage('shquest', '/img/math/q2/q.jpg', '');
+            break;
+        case 'mq3':
+            sendMessage('shquest', '/img/math/q3/q.jpg', '');
+            break;
+            //sci
+        case 'sciq1':
+            sendMessage('shquest', '/img/science/q1/q.jpg', '');
+            break;
+        case 'sciq2':
+            sendMessage('shquest', '/img/science/q2/q.jpg', '');
+            break;            
+        case 'sciq3':
+            sendMessage('shquest', '/img/science/q3/q.jpg', '');
+            break;
+            //Fil
+        case 'filq1':
+            sendMessage('shquest', '/img/fil/q1/q.jpg', '');
+            break;
+        case 'filq2':
+            sendMessage('shquest', '/img/fil/q2/q.jpg', '');
+            break;
+        case 'filq3':
+            sendMessage('shquest', '/img/fil/q3/q.jpg', '');
+            break;
+            //his
+        case 'hisq1':
+            sendMessage('shquest', '/img/his/q1/q.jpg', '');
+            break;
+        case 'hisq2':
+            sendMessage('shquest', '/img/his/q2/q.jpg', '');
+            break;            
+        case 'hisq3':
+            sendMessage('shquest', '/img/his/q3/q.jpg', '');
+            break;
+            //Agriculture
+        case 'agq1':
+            sendMessage('shquest', '/img/agri/q1/q.jpg', '');
+            break;
+        case 'agq2':
+            sendMessage('shquest', '/img/agri/q2/q.jpg', '');
+            break;
+        case 'agq3':
+            sendMessage('shquest', '/img/agri/q3/q.jpg', '');
+            break;
+            //music
+        case 'musq1':
+            sendMessage('shquest', '/img/music/q1/q.jpg', '');
+            break;
+        case 'musq2':
+            sendMessage('shquest', '/img/music/q2/q.jpg', '');
+            break;            
+        case 'musq3':
+            sendMessage('shquest', '/img/music/q3/q.jpg', '');
+            break;
+            //shobiz
+        case 'shq1': 
+            sendMessage('shquest', '/img/shobiz/q1/q.jpg', '');
+            break;
+        case 'shq2':
+            sendMessage('shquest', '/img/shobiz/q2/q.jpg', '');
+            break;
+        case 'shq3':
+            sendMessage('shquest', '/img/shobiz/q3/q.jpg', '');
+            break;
+            //sports
+        case 'spoq1':
+            sendMessage('shquest', '/img/sports/q1/q.jpg', '');
+            break;
+        case 'spoq2':
+            sendMessage('shquest', '/img/sports/q2/q.jpg', '');
+            break;            
+        case 'spoq3':
+            sendMessage('shquest', '/img/sports/q3/q.jpg', '');
+            break;
+            //politics
+        case 'polq1':
+            sendMessage('shquest', '/img/pol/q1/q.jpg', '');
+            break;
+        case 'polq2':
+            sendMessage('shquest', '/img/pol/q2/q.jpg', '');
+            break;
+        case 'polq3':
+            sendMessage('shquest', '/img/pol/q3/q.jpg', '');
+            break;
+            //economics
+        case 'econq1':
+            sendMessage('shquest', '/img/econ/q1/q.jpg', '');
+            break;
+        case 'econq2':
+            sendMessage('shquest', '/img/econ/q2/q.jpg', '');
+            break;            
+        case 'econq3':
+            sendMessage('shquest', '/img/econ/q3/q.jpg', '');
+            break;
+            
+    
+        default:
+            break;
+    }
+
+   
+ }
+
+ function showqans(id){
+    switch (id) {
+        case 'ma1': //math        
+            sendMessage('shquest', '/img/math/q1/a.jpg', '');
+            break;
+        case 'ma2':
+            sendMessage('shquest', '/img/math/q2/a.jpg', '');
+            break;
+        case 'ma3':
+            sendMessage('shquest', '/img/math/q3/a.jpg', '');
+            break;
+            //sci
+        case 'scia1':
+            sendMessage('shquest', '/img/science/q1/a.jpg', '');
+            break;
+        case 'scia2':
+            sendMessage('shquest', '/img/science/q2/a.jpg', '');
+            break;            
+        case 'scia3':
+            sendMessage('shquest', '/img/science/q3/a.jpg', '');
+            break;
+            //Fil
+        case 'fila1':
+            sendMessage('shquest', '/img/fil/q1/a.jpg', '');
+            break;
+        case 'fila2':
+            sendMessage('shquest', '/img/fil/q2/a.jpg', '');
+            break;
+        case 'fila3':
+            sendMessage('shquest', '/img/fil/q3/a.jpg', '');
+            break;
+            //his
+        case 'hisa1':
+            sendMessage('shquest', '/img/his/q1/a.jpg', '');
+            break;
+        case 'hisa2':
+            sendMessage('shquest', '/img/his/q2/a.jpg', '');
+            break;            
+        case 'hisa3':
+            sendMessage('shquest', '/img/his/q3/a.jpg', '');
+            break;
+            //Agriculture
+        case 'aga1':
+            sendMessage('shquest', '/img/agri/q1/a.jpg', '');
+            break;
+        case 'aga2':
+            sendMessage('shquest', '/img/agri/q2/a.jpg', '');
+            break;
+        case 'aga3':
+            sendMessage('shquest', '/img/agri/q3/a.jpg', '');
+            break;
+            //music
+        case 'musa1':
+            sendMessage('shquest', '/img/music/q1/a.jpg', '');
+            break;
+        case 'musa2':
+            sendMessage('shquest', '/img/music/q2/a.jpg', '');
+            break;            
+        case 'musa3':
+            sendMessage('shquest', '/img/music/q3/a.jpg', '');
+            break;
+            //shobiz
+        case 'sha1': 
+            sendMessage('shquest', '/img/shobiz/q1/a.jpg', '');
+            break;
+        case 'sha2':
+            sendMessage('shquest', '/img/shobiz/q2/a.jpg', '');
+            break;
+        case 'sha3':
+            sendMessage('shquest', '/img/shobiz/q3/a.jpg', '');
+            break;
+            //sports
+        case 'spoa1':
+            sendMessage('shquest', '/img/sports/q1/a.jpg', '');
+            break;
+        case 'spoa2':
+            sendMessage('shquest', '/img/sports/q2/a.jpg', '');
+            break;            
+        case 'spoa3':
+            sendMessage('shquest', '/img/sports/q3/a.jpg', '');
+            break;
+            //politics
+        case 'pola1':
+            sendMessage('shquest', '/img/pol/q1/a.jpg', '');
+            break;
+        case 'pola2':
+            sendMessage('shquest', '/img/pol/q2/a.jpg', '');
+            break;
+        case 'pola3':
+            sendMessage('shquest', '/img/pol/q3/a.jpg', '');
+            break;
+            //economics
+        case 'econa1':
+            sendMessage('shquest', '/img/econ/q1/a.jpg', '');
+            break;
+        case 'econa2':
+            sendMessage('shquest', '/img/econ/q2/a.jpg', '');
+            break;            
+        case 'econa3':
+            sendMessage('shquest', '/img/econ/q3/a.jpg', '');
+            break;           
+    
+        default:
+            break;        
+        
+    }
+    btncorrect()
  }
 
 
@@ -282,6 +548,16 @@ function setanswerdash(){
         sendMessage('roullete', '', true) 
     }
    
+ }
+
+ function double(){
+   
+    var vall = $('#boardScore').text();
+    var doubleer = Number(vall) + Number(vall);
+    
+    $('#boardScore').text(doubleer);
+    sendMessage('doublesc', '' , '')
+    btncorrect()
  }
 
 
