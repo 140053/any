@@ -655,9 +655,10 @@
             <button id="musq2" onclick="showquestd(this.id)" class="button button__outline">
               QUESTION 2
             </button>
-            <button id="" onclick="playmusic(1)" class="button button__outline">
-                Play Music
+            <button id="" onclick="togglePlay()" class="button button__outline">
+                Play/Pause Music
             </button>
+            
 
             <button  id="musa2" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
              ANSWER 
@@ -669,8 +670,8 @@
             <button id="musq3" onclick="showquestd(this.id)" class="button button__outline">
               QUESTION 3
             </button>
-            <button id="" onclick="playmusic(2)" class="button button__outline">
-                Play Music
+            <button id="" onclick="togglePlay1()" class="button button__outline">
+                Play/Pause Music
             </button>
 
             <button  id="musa3" onclick="showqans(this.id)" class="button button__outline button__outline--primary">
@@ -820,6 +821,46 @@
           </div>
     </div>
 </div>
+
+
+
+
+<audio id="myAudio" src="/sound/anti-hero.mp3" preload="auto"></audio>
+<audio id="myAudio1" src="/sound/Santigwar.webm" preload="auto"></audio>
+
+
+<script>
+var myAudio = document.getElementById("myAudio");
+var myAudio1 = document.getElementById("myAudio1");
+var isPlaying = false;
+var isPlaying1 = false;
+
+function togglePlay() {
+  isPlaying ? myAudio.pause() : myAudio.play();
+};
+
+myAudio.onplaying = function() {
+  isPlaying = true;
+};
+myAudio.onpause = function() {
+  isPlaying = false;
+};
+
+
+function togglePlay1() {
+  isPlaying1 ? myAudio1.pause() : myAudio1.play();
+};
+
+myAudio1.onplaying = function() {
+  isPlaying1 = true;
+};
+myAudio1.onpause = function() {
+  isPlaying1 = false;
+};
+
+
+
+</script>
 
 
 

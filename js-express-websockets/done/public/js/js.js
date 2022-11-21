@@ -172,8 +172,9 @@ function setanswerdash(){
  }
 
  function playmusic(id){
+    
     if(id == 1){
-        const audio = new Audio("/sound/correct.mp3");
+        const audio1 = new Audio("/sound/correct.mp3");
         audio.play();
     }
     if(id == 2){
