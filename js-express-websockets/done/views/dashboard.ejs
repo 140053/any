@@ -12,14 +12,19 @@
         <script>
           window.console = window.console || function(t) {};
         </script>
-        <style type="text/css"></style>
+        <style type="text/css">
+          .treple{
+            left: 587px;
+          }
+        </style>
     </head>
     <body translate="no">       
          
       <div class="gameBoard">
           <!--- Scores --->
           <div class="score" id="boardScore">0</div>
-          <a onclick="double()" class="double">Double</a>
+          <a onclick="double('two')" class="double">Double</a>
+          <a onclick="double('tre')" class="double treple">X3</a>
           
           <div class="score" id="team1">0</div>
 

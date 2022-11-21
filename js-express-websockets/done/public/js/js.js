@@ -590,15 +590,25 @@ function setanswerdash(){
    
  }
 
- function double(){
+ function double(tre){
    
     var vall = $('#boardScore').text();
-    var doubleer = Number(vall) + Number(vall);
+    var doubleer = 0;
+    if(tre != 'tre'){
+        doubleer = Number(vall) + Number(vall);
+    }else{
+        doubleer = Number(vall) * 3;
+    }
+
+   
     
     $('#boardScore').text(doubleer);
     sendMessage('doublesc', '' , '')
     btncorrect()
  }
+
+
+ 
 
 
 /*jshint strict:false */
