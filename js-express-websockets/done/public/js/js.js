@@ -369,9 +369,12 @@ function setanswerdash(){
         case 'hisq4':
             sendMessage('shquest', '/img/his/q4/q.jpg', '');
             break;
-         case 'hisq4':
+        case 'hisq5':
             sendMessage('shquest', '/img/his/q5/q.jpg', '');
             break;
+        case 'hisq6':
+            sendMessage('shquest', '/img/his/q6/q.jpg', '');
+            break;         
             //Agriculture
         case 'agq1':
             sendMessage('shquest', '/img/agri/q1/q.jpg', '');
@@ -494,6 +497,8 @@ function setanswerdash(){
             break;            
         case 'hisa5':
             sendMessage('shquest', '/img/his/q5/a.jpg', '');
+        case 'hisa6':
+            sendMessage('shquest', '/img/his/q6/a.jpg', '');
             break;
             //Agriculture
         case 'aga1':
